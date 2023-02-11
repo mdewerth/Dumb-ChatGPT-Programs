@@ -1,0 +1,65 @@
+def main():
+    print("Welcome to the Beatles Personality Quiz!")
+    print("Answer the following questions to find out which member of the Beatles you're most like.\n")
+
+    # The quiz questions and corresponding answers
+    quiz_questions = [
+        "Are you more introverted or extroverted?",
+        "Do you prefer structured or spontaneous activities?",
+        "Do you enjoy taking risks or playing it safe?",
+        "Are you more of a dreamer or a realist?",
+        "Do you value creativity or practicality more?",
+        "Do you prefer to be a leader or a follower?",
+        "Are you more open-minded or set in your ways?",
+        "Do you value tradition or innovation more?",
+        "Are you more philosophical or straightforward?",
+        "Do you focus on the present or the future?"
+    ]
+    quiz_answers = [
+        ["Introverted", "John Lennon"],
+        ["Spontaneous", "Paul McCartney"],
+        ["Taking risks", "John Lennon"],
+        ["Dreamer", "George Harrison"],
+        ["Creativity", "Paul McCartney"],
+        ["Follower", "Ringo Starr"],
+        ["Open-minded", "George Harrison"],
+        ["Innovation", "John Lennon"],
+        ["Philosophical", "George Harrison"],
+        ["Future", "Paul McCartney"]
+    ]
+
+    # Keep track of the user's answers
+    user_answers = []
+    for question, answer in zip(quiz_questions, quiz_answers):
+        user_answer = input(f"{question} (Introverted/Extroverted, Structured/Spontaneous, Taking risks/Playing it safe, Dreamer/Realist, Creativity/Practicality, Leader/Follower, Open-minded/Set in your ways, Tradition/Innovation, Philosophical/Straightforward, Present/Future): ")
+        user_answers.append(user_answer)
+
+    # Determine the user's result based on their answers
+    result = "John Lennon"
+    john_points = 0
+    george_points = 0
+    paul_points = 0
+    ringo_points = 0
+
+    for user_answer, (answer, beatle) in zip(user_answers, quiz_answers):
+        if user_answer == answer:
+            if beatle == "John Lennon":
+                john_points += 1
+            elif beatle == "George Harrison":
+                george_points += 1
+            elif beatle == "Paul McCartney":
+                paul_points += 1
+            else:
+                ringo_points += 1
+
+    if john_points > george_points and john_points > paul_points and john_points > ringo_points:
+        result = "John Lennon"
+    elif george_points > john_points and george_points > paul_points and george_points > ringo_points:
+        result = "George Harrison"
+    elif paul_points > john_points and paul_points > george_points and paul_points > ringo_points:
+        result = "Paul McCartney"
+    else:
+        result = "Ringo Starr"
+
+    # Display the result to the user
+    print(f"\n
